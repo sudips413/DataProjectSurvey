@@ -4,22 +4,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const port = 3000;
 const survey = require('./Model/Survey');
-//for converting the documents to csv
-const fs = require('fs');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const csvWriter = createCsvWriter({
-    path: 'data.csv',
-    header: [
-        {id: 'name', title: 'Name'},
-        {id: 'age', title: 'Age'},
-        {id:'sex',title:"Sex"},
-        {id:'platform',title:"Platform"},
-        {id:'frequency',title:"Frequency"}
-    ],
-    append: false
-});
-
-
 //connect to mongodb 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://sudip:MongoDB123@cluster0.iwq7e3d.mongodb.net/survey', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -43,7 +27,7 @@ app.post('/survey', async(req, res) => {
         name: req.body.name,
         age: req.body.age,
         sex : req.body.sex,
-        platform: req.body.platform,
+        platform: req.body.socialMedia,
         frequency: req.body.frequency
     });
     await obj.save().then((data)=>{
