@@ -13,7 +13,7 @@
     "body-parser": "^1.20.2",
     "brace-expansion": "^1.1.11",
     "braces": "^3.0.2",
-    "bson": "^5.1.0",
+    "bson": "^4.7.2",
     "bytes": "^3.1.2",
     "call-bind": "^1.0.2",
     "chokidar": "^3.5.3",
