@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey From</title>
+</head>
+<style>
+    /* Style for the form container */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: linear-gradient(to right, #aaaeaf 0%, #a6b4cf 100%)
+}
+
+/* Style for the label element */
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style for the input and select elements */
+input[type="text"], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style for the radio button and checkbox inputs */
+input[type="radio"], input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style for the submit button on hover */
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Style for the form title */
+h1 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color:#ffffff
+}
+button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+
+</style>
+<body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <form id="form" >
+      <h1>Social Media Consumption</h1>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      
+      <label for="age">Age:</label>
+      <select id="age" name="age">
+        <option value="under 18">Under 18</option>
+        <option value="18-24">18-24</option>
+        <option value="25-34">25-34</option>
+        <option value="35-44">35-44</option>
+        <option value="45-54">45-54</option>
+        <option value="55-64">55-64</option>
+        <option value="65 or over">65 or over</option>
+      </select><br><br>
+      
+      <label>Sex:</label>
+      <select id="sex" name="sex">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        </select><br><br>
+      <label>Which social media platform do you prefer?</label><br>
+      <select id="platform" name="platform">
+        <option value="facebook">Facebook</option>
+        <option value="instagram">Instagram</option>
+        <option value="twitter">Twitter</option>
+      </select><br><br>
+      <label for="frequency">How often do you use social media?</label>
+      <select id="frequency" name="frequency">
+        <option value="daily">Daily</option>
+        <option value="a few times a week">A few times a week</option>
+        <option value="once a week">Once a week</option>
+        <option value="a few times a month">A few times a month</option>
+        <option value="rarely">Rarely</option>
+      </select><br>
+      <button type="submit">submit</button>
+    
+</body>
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async(e)=>{
+        e.preventDefault();
+        const name = document.querySelector('#name').value;
+        const age = document.querySelector('#age').value;
+        const sex = document.querySelector('#sex').value;
+        const socialMedia = document.querySelector('#platform').value;
+        const frequency = document.querySelector('#frequency').value;
+        if(name.lenght < 3){
+            alert('Please enter a valid name');
+            return;
+        }
+        if(age === 'under 18'){
+            alert('You are not eligible to participate in this survey');
+            return;
+        }
+        console.log(name,age,sex,socialMedia,frequency)
+        //ccreate a object 
+        let data={
+            name: name,
+            age :age,
+            sex :sex,
+            socialMedia :socialMedia,
+            frequency :frequency
+        }
+        await fetch('http://localhost:3000/survey',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(data)
+        }).then(alert('Thank you for your participation!')
+        ).catch(err=>console.log(err));
+
+    })
+</script>
+</html>
