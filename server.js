@@ -16,7 +16,7 @@ const csvWriter = createCsvWriter({
         {id:'platform',title:"Platform"},
         {id:'frequency',title:"Frequency"}
     ],
-    writeMode: 'overwrite',
+    append: false
 });
 
 
