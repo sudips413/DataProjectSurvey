@@ -132,7 +132,7 @@ button{
         const socialMedia = document.querySelector('#platform').value;
         const frequency = document.querySelector('#frequency').value;
         console.log(name,age,sex,socialMedia,frequency)
-        if(name.lenght < 3){
+        if(name === ''){
             alert('Please enter a valid name');
             return;
         }
