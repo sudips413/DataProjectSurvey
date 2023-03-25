@@ -134,7 +134,7 @@ button{
     const form = document.querySelector('form');
     form.addEventListener('submit', async(e)=>{
         e.preventDefault();
-        document.querySelector('#message').style.display = 'block';
+        
         const name = document.querySelector('#name').value;
         const age = document.querySelector('#age').value;
         const sex = document.querySelector('#sex').value;
@@ -159,6 +159,7 @@ button{
           alert("You need to select a frequency")
         }
         else{
+          document.querySelector('#message').style.display = 'block';
             let data={
                 name: name,
                 age :age,
