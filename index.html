@@ -150,8 +150,10 @@ button{
                 'Content-Type':'application/json'
             },
             body:JSON.stringify(data)
-        }).then(alert('Thank you for your participation!')
-        ).catch(err=>console.log(err));
+        }).then((res)=>{
+            alert('Thank you for your participation');
+            document.querySelector('#form').reset();
+        })
 
     })
 </script>
