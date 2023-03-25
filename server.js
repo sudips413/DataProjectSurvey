@@ -63,12 +63,15 @@ app.post('/survey', async(req, res) => {
 app.get('/data', async(req, res) => {
     try {
         const data = await survey.find();
-        await csvWriter.writeRecords(data);
-        //check if file is empty        
-        const csvFile = `${__dirname}/data.csv`;
-        res.setHeader('Content-Type', 'text/csv');
-        res.setHeader('Content-Disposition', 'attachment; filename="' + 'data.csv' + '"');
-        res.download(csvFile);
+        // await csvWriter.writeRecords(data);
+        // //check if file is empty        
+        // const csvFile = `${__dirname}/data.csv`;
+        // res.setHeader('Content-Type', 'text/csv');
+        // res.setHeader('Content-Disposition', 'attachment; filename="' + 'data.csv' + '"');
+        // res.download(csvFile);
+        // display in json format
+        res.json(data);
+        
         
     } catch (err) {
         console.error(err);
