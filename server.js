@@ -15,7 +15,8 @@ const csvWriter = createCsvWriter({
         {id:'sex',title:"Sex"},
         {id:'platform',title:"Platform"},
         {id:'frequency',title:"Frequency"}
-    ]
+    ],
+    writeMode: 'overwrite',
 });
 
 
@@ -68,10 +69,6 @@ app.get('/data', async(req, res) => {
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename="' + 'data.csv' + '"');
         res.download(csvFile);
-        //now delete the  data.csv file by checking the file exists or not
-        if(fs.existsSync(csvFile)){
-            fs.unlinkSync(csvFile);
-        }
         
     } catch (err) {
         console.error(err);
