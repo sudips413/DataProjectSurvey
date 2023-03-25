@@ -87,7 +87,8 @@ button{
       
       <label for="age">Age:</label>
       <select id="age" name="age">
-        <option value="under 18">Under 18</option>
+        <option value="under 13">Under 13</option>
+        <option value="13-17">13-17</option>
         <option value="18-24">18-24</option>
         <option value="25-34">25-34</option>
         <option value="35-44">35-44</option>
@@ -135,11 +136,11 @@ button{
             alert('Please enter a valid name');
             return;
         }
-        if(age === 'under 18'){
+        else if(age === 'under 13'){
             alert('You are not eligible to participate in this survey');
             return;
         }
-        if (sex==="Select one"){
+        else if (sex==="Select one"){
           alert("You need to select a sex")
         }
         else if (socialMedia==="Select one"){
