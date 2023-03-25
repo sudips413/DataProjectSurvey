@@ -5,6 +5,7 @@ app.use(bodyParser.json());
 const port = 3000;
 const survey = require('./Model/Survey');
 //for converting the documents to csv
+const fs = require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
     path: 'data.csv',
@@ -62,12 +63,16 @@ app.get('/data', async(req, res) => {
     try {
         const data = await survey.find();
         await csvWriter.writeRecords(data);
+        //check if file is empty        
         const csvFile = `${__dirname}/data.csv`;
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename="' + 'data.csv' + '"');
         res.download(csvFile);
-        //now empty the file
-        await csvWriter.writeRecords([]);
+        //now delete the  data.csv file by checking the file exists or not
+        if(fs.existsSync(csvFile)){
+            fs.unlinkSync(csvFile);
+        }
+        
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
