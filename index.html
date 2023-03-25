@@ -82,10 +82,10 @@ button{
   <body>
     <form id="form" >
       <h1>Social Media Consumption</h1>
-      <label for="name">Name:</label>
+      <label for="name">Name</label>
       <input type="text" id="name" name="name"><br><br>
       
-      <label for="age">Age:</label>
+      <label for="age">Age</label>
       <select id="age" name="age">
         <option value="under 13">Under 13</option>
         <option value="13-17">13-17</option>
@@ -97,7 +97,7 @@ button{
         <option value="65 or over">65 or over</option>
       </select><br><br>
       
-      <label>Sex:</label>
+      <label>Sex</label>
       <select id="sex" name="sex" value="">
         <option >Select one</option>
         <option value="male">Male</option>
@@ -132,7 +132,7 @@ button{
         const socialMedia = document.querySelector('#platform').value;
         const frequency = document.querySelector('#frequency').value;
         console.log(name,age,sex,socialMedia,frequency)
-        if(name === ''){
+        if( name === ''){
             alert('Please enter a valid name');
             return;
         }
