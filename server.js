@@ -66,6 +66,8 @@ app.get('/data', async(req, res) => {
         res.setHeader('Content-Type', 'text/csv');
         res.setHeader('Content-Disposition', 'attachment; filename="' + 'data.csv' + '"');
         res.download(csvFile);
+        //now empty the file
+        await csvWriter.writeRecords([]);
     } catch (err) {
         console.error(err);
         res.status(500).send('Server Error');
