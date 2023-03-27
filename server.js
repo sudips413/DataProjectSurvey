@@ -6,7 +6,7 @@ const port = 3000;
 const survey = require('./Model/Survey');
 //connect to mongodb 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://<username>:<password>@cluster0.iwq7e3d.mongodb.net/survey', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://sudip:MongoDB123@cluster0.iwq7e3d.mongodb.net/survey', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log('Connected to MongoDB...'))
 .catch(err => console.error('Could not connect to MongoDB...'));
 
